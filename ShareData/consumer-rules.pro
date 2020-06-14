@@ -1,0 +1,1 @@
+-keep class com.walixiwa.sharedata.ShareData.DataModel { *; }
