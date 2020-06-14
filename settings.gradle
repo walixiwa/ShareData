@@ -1,0 +1,3 @@
+include ':ShareData'
+include ':app'
+rootProject.name = "Compose"
