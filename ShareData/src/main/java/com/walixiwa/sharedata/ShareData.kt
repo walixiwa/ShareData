@@ -130,7 +130,7 @@ class ShareData {
             cursor?.let {
                 if (it.moveToFirst()) {
                     do {
-                        value = it.getString(2)
+                        value = it.getString(1)
                     } while (it.moveToNext())
                 }
             }
