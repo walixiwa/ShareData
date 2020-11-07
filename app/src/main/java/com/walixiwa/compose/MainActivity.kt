@@ -10,7 +10,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ShareData.init(this,1)
-        ShareData.instance.put("fuck", "you", "owner")
+        ShareData.instance.put("testKey", "存入的值", "owner")
+        val value = ShareData.instance.get("testKey", "默认值", "owner")
         ShareData.instance.get().forEach {
             Log.e("fuck", it.toString())
         }
