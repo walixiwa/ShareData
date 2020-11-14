@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ShareData.init(this,1)
+        ShareData.init(this, version = 1)
         ShareData.instance.put("testKey", "存入的值", "owner")
         val value = ShareData.instance.get("testKey", "默认值", "owner")
         ShareData.instance.get().forEach {

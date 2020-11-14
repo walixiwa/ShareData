@@ -100,10 +100,10 @@ class ShareData {
                 if (it.moveToFirst()) {
                     do {
                         array.add(DataModel().apply {
-                            this.key = it.getString(0).replace("$owner:","")
                             this.value = it.getString(1)
                             this.owner = it.getString(2)
                             this.timeMillis = it.getLong(3)
+                            this.key = it.getString(0).replace("$owner:","")
                         })
                     } while (it.moveToNext())
                 }
@@ -130,10 +130,10 @@ class ShareData {
                 if (it.moveToFirst()) {
                     do {
                         array.add(DataModel().apply {
-                            this.key = it.getString(0).replace("$owner:","")
                             this.value = it.getString(1)
                             this.owner = it.getString(2)
                             this.timeMillis = it.getLong(3)
+                            this.key = it.getString(0).replace("$owner:","")
                         })
                     } while (it.moveToNext())
                 }
@@ -157,10 +157,10 @@ class ShareData {
                 if (it.moveToFirst()) {
                     do {
                         array.add(DataModel().apply {
-                            this.key = it.getString(0).replace("$owner:","")
                             this.value = it.getString(1)
                             this.owner = it.getString(2)
                             this.timeMillis = it.getLong(3)
+                            this.key = it.getString(0).replace("$owner:","")
                         })
                     } while (it.moveToNext())
                 }
