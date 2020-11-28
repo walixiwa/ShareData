@@ -76,7 +76,7 @@ class ShareData {
                             this.value = it.getString(1)
                             this.owner = it.getString(2)
                             this.timeMillis = it.getLong(3)
-                            this.key = it.getString(0).replace("$owner:","")
+                            this.key = it.getString(0).replace("$owner:", "")
                         })
                     } while (it.moveToNext())
                 }
@@ -103,7 +103,68 @@ class ShareData {
                             this.value = it.getString(1)
                             this.owner = it.getString(2)
                             this.timeMillis = it.getLong(3)
-                            this.key = it.getString(0).replace("$owner:","")
+                            this.key = it.getString(0).replace("$owner:", "")
+                        })
+                    } while (it.moveToNext())
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            if ((null != cursor) && (!cursor.isClosed)) {
+                cursor.close()
+            }
+        }
+        return array
+    }
+
+
+    /**
+     * 取出某个分组的所有记录
+     */
+    fun get(key: String, owner: String): List<DataModel> {
+        val array = ArrayList<DataModel>()
+        val action = "select * from shareData where keyName = '${owner.formatQuery()}:${key.formatQuery()}' and owner = '${owner.formatQuery()}' order by timeMillis desc"
+        val cursor: Cursor? = database?.rawQuery(action, null)
+        try {
+            cursor?.let {
+                if (it.moveToFirst()) {
+                    do {
+                        array.add(DataModel().apply {
+                            this.value = it.getString(1)
+                            this.owner = it.getString(2)
+                            this.timeMillis = it.getLong(3)
+                            this.key = it.getString(0).replace("$owner:", "")
+                        })
+                    } while (it.moveToNext())
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            if ((null != cursor) && (!cursor.isClosed)) {
+                cursor.close()
+            }
+        }
+        return array
+    }
+
+    /**
+     * 取出某个分组的所有记录
+     */
+    fun getASC(key: String, owner: String): List<DataModel> {
+        val array = ArrayList<DataModel>()
+        val action = "select * from shareData where keyName = '${owner.formatQuery()}:${key.formatQuery()}' and owner = '${owner.formatQuery()}' order by timeMillis asc"
+        val cursor: Cursor? = database?.rawQuery(action, null)
+        try {
+            cursor?.let {
+                if (it.moveToFirst()) {
+                    do {
+                        array.add(DataModel().apply {
+                            this.value = it.getString(1)
+                            this.owner = it.getString(2)
+                            this.timeMillis = it.getLong(3)
+                            this.key = it.getString(0).replace("$owner:", "")
                         })
                     } while (it.moveToNext())
                 }
@@ -133,7 +194,7 @@ class ShareData {
                             this.value = it.getString(1)
                             this.owner = it.getString(2)
                             this.timeMillis = it.getLong(3)
-                            this.key = it.getString(0).replace("$owner:","")
+                            this.key = it.getString(0).replace("$owner:", "")
                         })
                     } while (it.moveToNext())
                 }
@@ -160,7 +221,7 @@ class ShareData {
                             this.value = it.getString(1)
                             this.owner = it.getString(2)
                             this.timeMillis = it.getLong(3)
-                            this.key = it.getString(0).replace("$owner:","")
+                            this.key = it.getString(0).replace("$owner:", "")
                         })
                     } while (it.moveToNext())
                 }
@@ -218,7 +279,7 @@ class ShareData {
         return count > 0
     }
 
-    fun getCount(owner: String):Int{
+    fun getCount(owner: String): Int {
         val action = "select count(*) from shareData where owner = '${owner.formatQuery()}'"
         val cursor = database?.rawQuery(action, null)
         var count = 0

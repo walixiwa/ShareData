@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         ShareData.init(this, version = 1)
         ShareData.instance.put("testKey", "存入的值", "owner")
         val value = ShareData.instance.get("testKey", "默认值", "owner")
-        ShareData.instance.get().forEach {
+        ShareData.instance.get<String>().forEach {
             Log.e("fuck", it.toString())
         }
     }
