@@ -46,6 +46,14 @@ class ShareData {
     }
 
     /**
+     * 清空指定owner下的所有记录
+     */
+    fun delete(owner: String) {
+        val action = "delete from shareData where owner = '${owner.formatQuery()}'"
+        database?.execSQL(action)
+    }
+
+    /**
      * 清空所有记录
      */
     fun clear() {
